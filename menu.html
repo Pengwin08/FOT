@@ -30,7 +30,7 @@
     .overlay {
       position: relative;
       z-index: 1;
-      min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -68,19 +68,15 @@
     .banner img {
       width: 90%;
       max-width: 400px;
-      height: auto;
-      margin: 10px auto;
       border-radius: 12px;
     }
 
-    /* TAGLINE */
     .tagline {
       font-style: italic;
       margin-top: 10px;
       font-size: 16px;
     }
 
-    /* DATE & LOCATION */
     .date, .location {
       margin-top: 6px;
       font-weight: bold;
@@ -93,97 +89,98 @@
       font-weight: bold;
     }
 
-    .location a:hover {
-      text-decoration: underline;
-    }
-
     /* BUTTONS */
     .buttons {
       margin: 25px 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 12px;
       width: 100%;
+      align-items: center;
     }
 
     .buttons a {
       width: 80%;
       max-width: 280px;
       padding: 50px 0;
-      color: black;
-      text-decoration: none;
-      border-radius: 25px;
       font-size: 25px;
       font-weight: bold;
-      text-align: center;
-      display: block;
+      text-decoration: none;
+      border-radius: 25px;
       background-size: cover;
       background-position: center;
-      position: relative;
       transition: transform 0.3s;
     }
+    .buttons {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+  justify-content: center; /* <-- added this */
+}
 
     .buttons a:hover {
       transform: scale(1.03);
     }
 
-    .buttons a span {
-      position: relative;
-      z-index: 2;
-      background-color: yellow;
-      padding: 5px 10px;
+    .buttons span {
+      background: yellow;
+      padding: 5px 12px;
       border-radius: 20px;
+      color: black;
     }
 
     .btn-directory { background-image: url('dirlogo.jpg'); }
     .btn-program   { background-image: url('fotlogo.jpg'); }
     .btn-venue     { background-image: url('gymmap.jpg'); }
 
-    /* FOOTER */
     footer {
       font-style: italic;
       margin-top: 20px;
       font-size: 20px;
     }
 
-    /* CREDITS */
     .credits {
-      text-align: center;
-      padding: 8px 10px;
       font-size: 12px;
       color: #333;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
+      padding: 8px;
+      margin-top: 10px;
     }
 
     @media (min-width: 768px) {
-      header h1 { font-size: 22px; }
-      .buttons { flex-direction: row; justify-content: center; }
-      .buttons a { width: 200px; padding: 50px 0; }
+      .buttons { flex-direction: row; }
+      .buttons a { width: 200px; }
     }
 
     @media (max-width: 400px) {
       header h1 { font-size: 16px; }
       .buttons a { font-size: 14px; padding: 40px 0; }
-      .credits { font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- BACKGROUND VIDEO -->
   <video id="bgVideo" autoplay loop muted playsinline>
     <source src="balilihan_intro.mp4" type="video/mp4">
-    Your browser does not support video.
   </video>
 
-  <div class="overlay">
+  <!-- BACKGROUND AUDIO -->
+  <audio id="bgAudio" autoplay loop muted preload="auto">
+    <source src="balilihan_intro.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="overlay" onclick="enableAudio()">
     <header>
-      <img src="dpdlogo.png" alt="Logo" class="logo">
+      <img src="dpdlogo.png" class="logo">
       <h1>DIVISION OF BOHOL</h1>
     </header>
 
     <div class="banner">
-      <img src="fotlogo.jpg" alt="Banner Photo">
+      <img src="fotlogo.jpg">
     </div>
 
     <div class="tagline">Splendor Behind the Greens</div>
@@ -201,11 +198,24 @@
 
     <footer>You are cordially invited!</footer>
 
-    <!-- CREDITS -->
     <div class="credits">
-      Created by: <strong>Gwyneth Vera D. Madanguit</strong> &amp; <strong>Christine A. Cimeni</strong>
+      Created by: <strong>Gwyneth Vera D. Madanguit</strong> &amp;
+      <strong>Christine A. Cimeni</strong>
     </div>
   </div>
+
+  <script>
+    const audio = document.getElementById('bgAudio');
+    let unlocked = false;
+
+    function enableAudio() {
+      if (!unlocked) {
+        audio.muted = false;
+        audio.play();
+        unlocked = true;
+      }
+    }
+  </script>
 
 </body>
 </html>
