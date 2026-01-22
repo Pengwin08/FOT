@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Via Sikatuna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #d8f3dc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER WITH BACK ARROW */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: white;
+      color: #1e3c72;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header img.arrow {
+      width: 30px;
+      height: auto;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    header span {
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* VIDEO CONTAINER */
+    .video-container {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: inline-block;
+      margin: 15px auto 30px auto;
+      padding: 12px 25px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: black;
+    }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 480px) {
+      header span {
+        font-size: 16px;
+      }
+
+      header img.arrow {
+        width: 25px;
+      }
+
+      video {
+        max-width: 95%;
+      }
+
+      .back-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      header span {
+        font-size: 14px;
+      }
+
+      .back-btn {
+        font-size: 13px;
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER WITH BACK ARROW -->
+  <header>
+    <img src="arrow.png" alt="Back" class="arrow" onclick="goBack()">
+    <span>Via Sikatuna</span>
+  </header>
+
+  <!-- VIDEO -->
+  <div class="video-container">
+    <video id="routeVideo" autoplay muted playsinline controls>
+      <source src="via_sikatuna.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <a class="back-btn" href="balilihan.html">← Back</a>
+
+  <!-- AUDIO -->
+  <audio id="beepAudio" src="beep.mp3" preload="auto"></audio>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    // Play beep when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      const beep = document.getElementById('beepAudio');
+      const video = document.getElementById('routeVideo');
+
+      // Unmute video and play
+      video.muted = false;
+      video.play().catch(() => console.log("Video autoplay requires user interaction on some browsers"));
+
+      // Play beep
+      beep.play().catch(() => console.log("Beep autoplay requires user interaction on some browsers"));
+    });
+  </script>
+
+</body>
+</html>

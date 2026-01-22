@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CPMNHS Venue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #d8f3dc;
+      text-align: center;
+      position: relative;
+    }
+
+    /* SMALL ICON IN UPPER LEFT */
+    .top-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 80px;
+      height: auto;
+    }
+
+    .content {
+      padding: 100px 20px 40px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #1e3c72;
+    }
+
+    /* MAP IMAGE */
+    .map img {
+      width: 60%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      cursor: zoom-in;
+      transition: transform 0.3s ease;
+    }
+
+    /* INFO SECTION */
+    .info {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .info p {
+      margin: 10px 0;
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background: black;
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (max-width: 768px) {
+      .map img {
+        width: 80%;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .info {
+        font-size: 15px;
+      }
+
+      .top-icon {
+        width: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .map img {
+        width: 95%;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .info {
+        font-size: 14px;
+      }
+
+      .back {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+
+      .top-icon {
+        width: 50px;
+      }
+
+      .content {
+        padding: 90px 15px 30px;
+      }
+    }
+
+    /* LIGHTBOX OVERLAY */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: zoom-out;
+    }
+
+    #lightbox img {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SMALL ICON TOP LEFT -->
+  <img src="fotlogo.jpg" alt="Logo Icon" class="top-icon">
+
+  <div class="content">
+    <!-- HEADING -->
+    <h1>Congressman Pablo Malasarte NHS</h1>
+
+    <!-- MAP IMAGE -->
+    <div class="map">
+      <img src="gymmap.jpg" alt="Gym Map" id="mapImg">
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="info">
+      <p><strong>Event Chairperson: Nilo B. Ombay</strong></p>
+      <p><strong>Contact Number: 0918-637-9043</strong></p>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <a class="back" href="venue.html">← Back to Venue</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="closeLightbox()">
+    <img src="" alt="Zoomed Image" id="lightboxImg">
+  </div>
+
+  <script>
+    const mapImg = document.getElementById('mapImg');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    mapImg.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = mapImg.src;
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+    }
+  </script>
+
+</body>
+</html>

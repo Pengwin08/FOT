@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Balilihan Routes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #d8f3dc;
+      text-align: center;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: white;
+    }
+
+    header img.logo {
+      width: 45px;
+      height: auto;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    /* LOCATION & TAGLINE */
+    .location {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .tagline {
+      font-style: italic;
+      margin-top: 8px;
+      font-size: 16px;
+      padding: 0 15px;
+    }
+
+    .date {
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* ROUTES GRID */
+    .routes {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .route-item {
+      text-align: center;
+      width: 80%;
+      max-width: 300px;
+    }
+
+    .route-item img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 4px solid #28a745; /* green border */
+      box-sizing: border-box;
+    }
+
+    .route-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .route-item .caption {
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #1e3c72;
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background: black;
+    }
+
+    /* FOOTER */
+    footer {
+      font-style: italic;
+      margin: 30px 0 20px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* TABLET & DESKTOP */
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .routes {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .route-item {
+        width: 200px;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="balilihanlogo.jpg" alt="Logo" class="logo">
+    <h1>BALILIHAN DISTRICT</h1>
+  </header>
+
+  <!-- LOCATION & TAGLINE -->
+  <div class="location">Welcome to Balilihan!</div>
+  <div class="tagline">Splendor Behind the Greens</div>
+  <div class="date">January 26, 2026</div>
+
+  <!-- ROUTES -->
+  <div class="routes">
+    <div class="route-item">
+      <a href="antequera.html" onclick="playBeep()">
+        <img src="antequera.jpg" alt="Via Antequera">
+        <div class="caption">Via Antequera</div>
+      </a>
+    </div>
+    <div class="route-item">
+      <a href="catigbian.html" onclick="playBeep()">
+        <img src="catigbian.jpg" alt="Via Catigbian">
+        <div class="caption">Via Catigbian</div>
+      </a>
+    </div>
+    <div class="route-item">
+      <a href="corella.html" onclick="playBeep()">
+        <img src="corella.jpg" alt="Via Corella">
+        <div class="caption">Via Corella</div>
+      </a>
+    </div>
+    <div class="route-item">
+      <a href="cortes.html" onclick="playBeep()">
+        <img src="cortes.jpg" alt="Via Cortes">
+        <div class="caption">Via Cortes</div>
+      </a>
+    </div>
+    <div class="route-item">
+      <a href="sikatuna.html" onclick="playBeep()">
+        <img src="sikatuna.jpg" alt="Via Sikatuna">
+        <div class="caption">Via Sikatuna</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <a class="back" href="menu.html">← Back to Main Menu</a>
+
+  <!-- FOOTER -->
+  <footer>You are cordially invited!</footer>
+
+  <!-- AUDIO -->
+  <audio id="beep-sound" src="beep.mp3" preload="auto"></audio>
+
+  <script>
+    function playBeep() {
+      const beep = document.getElementById('beep-sound');
+      beep.currentTime = 0;
+      beep.play();
+    }
+  </script>
+
+</body>
+</html>
