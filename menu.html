@@ -127,13 +127,15 @@
     .buttons a {
       width: 80%;
       max-width: 280px;
-      padding: 50px 0;
-      font-size: 25px;
+      height: 140px;
+      font-size: 22px;
       font-weight: bold;
       text-decoration: none;
       border-radius: 25px;
       background-size: cover;
       background-position: center;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.3s;
     }
 
@@ -141,12 +143,20 @@
       transform: scale(1.03);
     }
 
-    .buttons span {
-      background: yellow;
-      padding: 5px 12px;
-      border-radius: 20px;
-      color: black;
-    }
+    /* LABEL AT LOWER-CENTER OF BUTTON */
+.buttons span {
+  position: absolute;
+  bottom: 12px;              /* lower part */
+  left: 50%;                 /* center horizontally */
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
 
     .btn-directory { background-image: url('dirlogo.jpg'); }
     .btn-program   { background-image: url('fotlogo.jpg'); }
@@ -173,7 +183,7 @@
 
     @media (max-width: 400px) {
       header h1 { font-size: 16px; }
-      .buttons a { font-size: 14px; padding: 40px 0; }
+      .buttons span { font-size: 16px; }
     }
   </style>
 </head>
@@ -183,7 +193,6 @@
   <div class="video-container">
     <video id="bgVideo" autoplay loop muted playsinline>
       <source src="balilihan_intro.mp4" type="video/mp4">
-      Your browser does not support video.
     </video>
     <button id="playVideoBtn">Play Video</button>
   </div>
@@ -231,18 +240,13 @@
     const audio = document.getElementById('bgAudio');
     let unlocked = false;
 
-    // Attempt autoplay, fallback to button if blocked
-    video.play().catch(() => {
-      playBtn.style.display = 'block';
-    });
+    video.play().catch(() => playBtn.style.display = 'block');
 
-    // Click fallback to play video
-    playBtn.addEventListener('click', () => {
+    playBtn.onclick = () => {
       video.play();
       playBtn.style.display = 'none';
-    });
+    };
 
-    // Unmute/play audio on first user interaction
     function enableAudio() {
       if (!unlocked) {
         audio.muted = false;
