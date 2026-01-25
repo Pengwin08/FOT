@@ -144,23 +144,23 @@
     }
 
     /* LABEL AT LOWER-CENTER OF BUTTON */
-.buttons span {
-  position: absolute;
-  bottom: 12px;              /* lower part */
-  left: 50%;                 /* center horizontally */
-  transform: translateX(-50%);
-  background: white;
-  color: black;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 20px;
-  white-space: nowrap;
-}
-
+    .buttons span {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: black;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 20px;
+      white-space: nowrap;
+    }
 
     .btn-directory { background-image: url('dirlogo.jpg'); }
     .btn-program   { background-image: url('fotlogo.jpg'); }
     .btn-venue     { background-image: url('gymmap.jpg'); }
+    .btn-snapshots { background-image: url('snap.jpg'); }
 
     footer {
       font-style: italic;
@@ -177,7 +177,7 @@
     }
 
     @media (min-width: 768px) {
-      .buttons { flex-direction: row; }
+      .buttons { flex-direction: row; flex-wrap: wrap; }
       .buttons a { width: 200px; }
     }
 
@@ -189,7 +189,7 @@
 </head>
 <body>
 
-  <!-- BACKGROUND VIDEO WITH MOBILE FALLBACK -->
+  <!-- BACKGROUND VIDEO -->
   <div class="video-container">
     <video id="bgVideo" autoplay loop muted playsinline>
       <source src="balilihan_intro.mp4" type="video/mp4">
@@ -224,6 +224,11 @@
       <a href="balilihan.html" class="btn-directory"><span>Directory</span></a>
       <a href="program.html" class="btn-program"><span>Program</span></a>
       <a href="venue.html" class="btn-venue"><span>Venue</span></a>
+      <a href="https://drive.google.com/drive/folders/1B8H6rYzBgUSxZpSZ0jgFTF9YRiAtXnFS"
+         class="btn-snapshots"
+         target="_blank" rel="noopener">
+        <span>Snapshots</span>
+      </a>
     </div>
 
     <footer>You are cordially invited!</footer>
