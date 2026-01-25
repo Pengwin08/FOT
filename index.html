@@ -56,8 +56,8 @@
       background: black;
     }
 
-    /* BUTTONS */
-    .btn-container {
+     /* BUTTONS */
+     .btn-container {
       position: absolute;
       bottom: 15px;
       right: 15px;
@@ -81,6 +81,56 @@
       background: rgba(255,255,255,0.9);
       color: black;
     }
+
+    /* BUTTONS */
+    .btn-container {
+      position: absolute;
+      bottom: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .btn-container button {
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-container button:hover {
+      background: rgba(255,255,255,0.9);
+      color: black;
+    }
+
+    /* MAIN MENU BUTTON STYLES */
+    .main-menu-btn {
+      width: 300px;        /* bigger width */
+      height: 120px;       /* bigger height */
+      font-size: 24px;
+      font-weight: bold;
+      background-image: url('fotlogo.jpg');
+      background-size: contain;  /* fully show the picture */
+      background-repeat: no-repeat;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      text-shadow: 2px 2px 4px black; /* make text readable */
+    }
+
+    .main-menu-btn:hover {
+      opacity: 0.85;
+    }
+    
 
     /* FOOTER */
     footer {
@@ -106,6 +156,16 @@
       .btn-container button {
         font-size: 12px;
         padding: 8px 12px;
+      }
+
+      .main-menu-btn {
+        width: 140px;
+        height: 55px;
+      }
+
+      .main-menu-btn span {
+        padding: 4px 12px;
+        font-size: 12px;
       }
 
       footer {
@@ -138,8 +198,7 @@
     </video>
 
     <div class="btn-container">
-      <button onclick="togglePlay()">Play / Pause</button>
-      <button onclick="goMenu()">Main Menu</button>
+      <button class="main-menu-btn" onclick="goMenu()"><span>Main Menu</span></button>
     </div>
   </div>
 
@@ -163,6 +222,11 @@
     function goMenu() {
       window.location.href = "menu.html";
     }
+
+    // Ensure autoplay works
+    window.onload = () => {
+      video.play().catch(() => {});
+    };
   </script>
 
 </body>
